@@ -1,0 +1,26 @@
+name: Question
+description: Ask anything. Students especially, this is the right form.
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Questions are welcome issues, not a nuisance. You do not need to work
+        out whether something is a bug first.
+  - type: textarea
+    id: question
+    attributes:
+      label: What are you trying to do, and what is confusing?
+      placeholder: I am trying to play codon-lite and I am not sure what the number means.
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: The command you ran, if any
+      placeholder: python -m whybox run codon-lite --agent human
+  - type: textarea
+    id: output
+    attributes:
+      label: What you saw
+      render: text

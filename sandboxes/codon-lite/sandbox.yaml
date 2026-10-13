@@ -1,0 +1,21 @@
+name: codon-lite
+title: A small world with a hidden genetic code
+version: 1-B
+oracle_kind: dry
+summary: Submit a sequence, get one number back, work out the rule behind it.
+rounds: 40
+specimens_per_round: 1
+oracle_module: oracle
+oracle_class: SandboxOracle
+instructions_file: instructions.md
+oracle_config:
+  world: single-position
+  n_beads: 12
+report_fields:
+  - fitness
+sealed_paths:
+  - sealed
+tags:
+  - invented-rules
+  - rule-discovery
+  - no-gpu

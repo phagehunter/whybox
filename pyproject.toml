@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "whybox"
+version = "0.1.0"
+description = "Build, run, and grade science sandboxes: closed worlds where you must infer the hidden rule, graded on the score AND on whether you worked out why."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = [
+    "teaching", "experiment-design", "scientific-reasoning",
+    "rule-induction", "agent-evaluation", "benchmark",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Topic :: Education",
+    "Topic :: Scientific/Engineering",
+]
+
+# There is deliberately no `dependencies` key. This project has none, which is
+# a teaching asset rather than an accident: a student's first week contains no
+# environment debugging. Omitting the key entirely is the clean way to say so.
+
+[project.scripts]
+whybox = "whybox.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/phagehunter/whybox"
+Issues = "https://github.com/phagehunter/whybox/issues"
+Changelog = "https://github.com/phagehunter/whybox/blob/main/CHANGELOG.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["whybox"]
+
+[tool.hatch.build.targets.sdist]
+# Sandboxes and their sealed folders ship with the package: a sandbox with no
+# hidden rule is not a sandbox.
+include = ["whybox", "sandboxes", "tests", "README.md", "LICENSE", "CHANGELOG.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

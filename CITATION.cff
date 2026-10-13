@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+title: whybox
+message: >-
+  This project is a scaffold for the science sandboxes framework. If you use
+  it, please cite the paper that introduced the framework, below.
+type: software
+license: MIT
+abstract: >-
+  A toolkit for building, running, and grading science sandboxes: closed
+  experimental settings in which an investigator submits specimens to a sealed
+  oracle, reads back a small report, and must infer the hidden rule behind it.
+  Grades the score and the stated understanding separately, on the grounds that
+  the two come apart.
+references:
+  - type: article
+    title: Science sandboxes measure the scientific capability of AI agents
+    year: 2026
+    journal: arXiv
+    notes: >-
+      arXiv:2608.30165 [q-bio.QM]. The authors' own implementation is at
+      https://github.com/asr2210/science-sandbox, MIT License,
+      Copyright (c) 2025 Ananth Rao. This project matches that license and
+      reimplements the ideas rather than their code.
+    authors:
+      - family-names: Rao
+        given-names: Arya S.
+      - family-names: Castro
+        given-names: Rodrigo I.
+      - family-names: Gosai
+        given-names: Sager J.
+      - family-names: Hsu
+        given-names: Kenneth B.
+      - family-names: Ektefaie
+        given-names: Yasha
+      - family-names: Singh
+        given-names: Shantanu
+      - family-names: Bhatia
+        given-names: Sangeeta N.
+      - family-names: Reilly
+        given-names: Steven K.
+      - family-names: Tewhey
+        given-names: Ryan
+      - family-names: Lander
+        given-names: Eric S.
+      - family-names: Sabeti
+        given-names: Pardis C.

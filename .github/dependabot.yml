@@ -1,0 +1,8 @@
+version: 2
+updates:
+  # Workflow actions only. This project has no Python dependencies, so
+  # pointing a dependency bot at Python would produce nothing but noise.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"

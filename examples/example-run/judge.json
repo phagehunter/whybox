@@ -1,0 +1,35 @@
+{
+  "sandbox": "codon-lite",
+  "agent": "hillclimb",
+  "score": {
+    "best_score": 5.0,
+    "rounds_used": 40,
+    "first_score": 4.0,
+    "last_score": 5.0,
+    "mean_gain_second_half": 0.0
+  },
+  "insight": {
+    "claims_total": 4,
+    "claims_found": 0,
+    "fraction": 0.0,
+    "detail": [
+      {
+        "claim": "read in groups of two",
+        "found": false
+      },
+      {
+        "claim": "first position is silent",
+        "found": false
+      },
+      {
+        "claim": "A or G gives a sticky bead",
+        "found": false
+      },
+      {
+        "claim": "score counts touching sticky pairs",
+        "found": false
+      }
+    ],
+    "caveat": "word matching only; a correct idea phrased differently will be missed"
+  }
+}

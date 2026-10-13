@@ -1,0 +1,65 @@
+{
+  "world": "single-position",
+  "rule": "The sequence is read in non-overlapping groups of 2 characters. Inside each group the FIRST character is ignored entirely. The second character decides the bead: A or G gives a sticky (H) bead, C or T gives a non-sticky (P) bead. The chain of beads is then folded on a square grid, and the score is the number of sticky beads touching other sticky beads in the best possible fold.",
+  "key_claims": [
+    {
+      "claim": "read in groups of two",
+      "synonyms": [
+        "groups of 2",
+        "pairs of characters",
+        "codon length 2",
+        "every two characters",
+        "2-character"
+      ]
+    },
+    {
+      "claim": "first position is silent",
+      "synonyms": [
+        "first character is ignored",
+        "position 1 does not matter",
+        "odd positions do not matter",
+        "silent position"
+      ]
+    },
+    {
+      "claim": "A or G gives a sticky bead",
+      "synonyms": [
+        "A and G are H",
+        "purines are H",
+        "A/G maps to H"
+      ]
+    },
+    {
+      "claim": "score counts touching sticky pairs",
+      "synonyms": [
+        "H-H contacts",
+        "hydrophobic contacts",
+        "folding",
+        "number of contacts in the best fold"
+      ]
+    }
+  ],
+  "codon_length": 2,
+  "alphabet": "ACGT",
+  "n_beads": 12,
+  "max_possible_fitness": 6,
+  "lookup_table": {
+    "AA": "H",
+    "AC": "P",
+    "AG": "H",
+    "AT": "P",
+    "CA": "H",
+    "CC": "P",
+    "CG": "H",
+    "CT": "P",
+    "GA": "H",
+    "GC": "P",
+    "GG": "H",
+    "GT": "P",
+    "TA": "H",
+    "TC": "P",
+    "TG": "H",
+    "TT": "P"
+  },
+  "how_to_read_this": "Compare these claims against the investigator's notebook. Reaching the maximum fitness is easy here: any sequence whose groups all map to sticky beads hits the ceiling, and random trial will find one within a few rounds. A high score therefore proves almost nothing. The question is whether the notebook states the grouping, the silent or interacting positions, and what the number counts."
+}

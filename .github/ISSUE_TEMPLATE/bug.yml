@@ -1,0 +1,26 @@
+name: Bug report
+description: Something behaves differently from how it is documented.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and what happened instead
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: The exact commands to reproduce it
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "3.12.1"
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
