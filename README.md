@@ -113,6 +113,20 @@ leaderboard/             collected rows, with the two baselines already in
 docs/                    architecture, and how to add your own sandbox
 ```
 
+## Play it in a browser, right now
+
+**<https://curtishoffmann.com/whybox>** runs one sandbox with no install, no
+account, and no Python. Submit a sequence, read one number, and work out what
+produces it.
+
+That page reimplements the example world in JavaScript, because a browser
+cannot run the oracle in a separate process. The two implementations are held
+together by a test that runs both and compares their answers, so they cannot
+drift apart silently. In a browser the rule is readable in developer tools by
+anyone who looks; what the page protects instead is that the rule cannot
+change while you play, which the fingerprint shown before your first
+experiment makes checkable.
+
 ## Play it yourself first
 
 Before pointing any model at a sandbox, spend ten minutes being the

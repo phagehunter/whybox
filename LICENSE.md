@@ -17,8 +17,10 @@ is theirs and the scaffolding is not much use without the idea behind it.
 
 ## Two things still to decide
 
-**The copyright line currently reads Curtis Hoffmann.** Change it if the work
-belongs to an institution rather than to you personally.
+**The copyright line reads `phagehunter`**, the GitHub account that publishes
+this. A handle is a valid copyright holder, and it keeps a personal address
+off a public file. If this work ever needs to be assigned to an institution,
+or asserted in a dispute, a legal name is easier to act on than a handle.
 
 **Writing to the authors before publishing has not been done.** The paper says
 they want others to build sandboxes in their own fields, so a teaching version

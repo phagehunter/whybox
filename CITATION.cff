@@ -5,6 +5,8 @@ message: >-
   it, please cite the paper that introduced the framework, below.
 type: software
 license: MIT
+authors:
+  - alias: phagehunter
 abstract: >-
   A toolkit for building, running, and grading science sandboxes: closed
   experimental settings in which an investigator submits specimens to a sealed

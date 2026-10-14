@@ -18,6 +18,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v4
+        # The browser page reimplements the hidden rule in JavaScript, because
+        # a browser cannot run the oracle in a separate process. Without node
+        # here, the test that keeps the two implementations in step would skip
+        # silently, which is the worst of both worlds.
+        with:
+          node-version: "22"
+      - name: Confirm the browser rule still matches the Python rule
+        run: node -e "const w=require('./assets/whybox.js'); if(w.measure('A'.repeat(24))!==6) process.exit(1); console.log('browser bundle loads')"
       - name: Run the test suite
         run: python -m unittest discover -s tests -v
       - name: Install the package and run it from somewhere else

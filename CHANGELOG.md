@@ -29,6 +29,12 @@ Sandboxes carry their own separate two-part versions, explained in
 - Community files: contributing guide, code of conduct, security policy, issue
   templates.
 - A written research review of adjacent projects, under `docs/research/`.
+- A playable page at `index.html`, published at curtishoffmann.com/whybox. It
+  reimplements the example world in JavaScript, since a browser has no
+  subprocesses, and shows a fingerprint of the hidden rule before play starts
+  so the rule provably cannot change mid-game.
+- Tests that run both implementations and compare them, both on scores and on
+  how they grade a stated rule, so the two cannot drift apart.
 
 ### Changed
 
@@ -48,6 +54,14 @@ Sandboxes carry their own separate two-part versions, explained in
   changes. An old three-part version is now refused with an explanation.
 - The results table groups rows by sandbox version instead of interleaving
   them.
+
+### Fixed
+
+- The grading vocabulary punished anyone who understood the system and said so
+  in their own words. A correct plain-English statement scored zero of four.
+  Both graders now recognize ordinary phrasings, and a test pins that.
+- Submitting an empty rule on the web page destroyed the results markup, so
+  the student could never see their own verdict afterwards.
 
 ### Known limits
 
