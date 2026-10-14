@@ -33,6 +33,14 @@ Sandboxes carry their own separate two-part versions, explained in
   reimplements the example world in JavaScript, since a browser has no
   subprocesses, and shows a fingerprint of the hidden rule before play starts
   so the rule provably cannot change mid-game.
+  It is written for someone meeting the subject for the first time: numbered
+  steps, an example to copy, the score range stated plainly, coaching that
+  changes as the tries run down, and all of the conceptual material moved
+  below the game rather than in front of it.
+- Two notes boxes on that page rather than one, asking separately what raises
+  the score and what lowers it. Asking only the first is the most common
+  reason people stall on a puzzle like this, and it is the largest documented
+  effect in the research on these games.
 - Tests that run both implementations and compare them, both on scores and on
   how they grade a stated rule, so the two cannot drift apart.
 

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>whybox — a closed room with a locked machine in it</title>
-<meta name="description" content="Play a science sandbox in your browser. Submit a sequence, read one number, and work out the hidden rule behind it. You will reach the top score long before you can explain it.">
+<title>whybox — a guessing game about how experiments work</title>
+<meta name="description" content="Type a 24-letter code, get a score, and work out the hidden rule behind it. Takes ten minutes, needs nothing installed, and no background knowledge.">
 <meta property="og:title" content="whybox">
-<meta property="og:description" content="A closed room with a locked machine in it. Work out what is inside.">
+<meta property="og:description" content="Type a code, get a score, work out the hidden rule. A ten-minute game about how experiments actually work.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,35 +22,38 @@
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0;
-    background: var(--midnight);
-    color: var(--bone);
-    font-family: "Crimson Pro", Georgia, serif;
-    font-size: 19px;
-    line-height: 1.65;
+    margin: 0; background: var(--midnight); color: var(--bone);
+    font-family: "Crimson Pro", Georgia, serif; font-size: 19px; line-height: 1.65;
   }
-  main { max-width: 760px; margin: 0 auto; padding: 48px 20px 96px; }
-  h1 {
-    font-size: 54px; line-height: 1.05; margin: 0 0 8px;
-    color: var(--gold); font-weight: 600; letter-spacing: -0.01em;
-  }
-  h2 { font-size: 30px; margin: 56px 0 14px; color: var(--gold); font-weight: 600; }
-  h3 { font-size: 22px; margin: 28px 0 8px; color: var(--bone); font-weight: 600; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 20px 96px; }
+  h1 { font-size: 54px; line-height: 1.05; margin: 0 0 10px; color: var(--gold); font-weight: 600; }
+  h2 { font-size: 29px; margin: 52px 0 14px; color: var(--gold); font-weight: 600; }
+  h3 { font-size: 21px; margin: 26px 0 8px; font-weight: 600; }
   p { margin: 0 0 18px; }
   a { color: var(--gold); }
   a:hover { color: var(--bone); }
-  .lede { font-size: 23px; color: var(--bone); }
+  .lede { font-size: 23px; }
   .dim { color: var(--dim); }
   .small { font-size: 16px; }
   code, .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.86em; }
-  .panel {
-    background: var(--indigo);
-    border: 1px solid rgba(197,160,89,0.3);
-    border-radius: 10px;
-    padding: 24px;
-    margin: 28px 0;
+  ol.steps { padding-left: 0; list-style: none; counter-reset: step; margin: 0 0 20px; }
+  ol.steps li {
+    counter-increment: step; position: relative;
+    padding-left: 46px; margin-bottom: 14px;
   }
-  label { display: block; font-size: 16px; color: var(--dim); margin-bottom: 7px; }
+  ol.steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 2px;
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 1px solid var(--gold); color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-family: "JetBrains Mono", monospace;
+  }
+  .panel {
+    background: var(--indigo); border: 1px solid rgba(197,160,89,0.3);
+    border-radius: 10px; padding: 24px; margin: 24px 0;
+  }
+  label { display: block; font-size: 16px; color: var(--bone); margin-bottom: 7px; }
+  label .why { color: var(--dim); font-size: 15px; }
   input[type=text], textarea {
     width: 100%; background: var(--midnight); color: var(--bone);
     border: 1px solid rgba(226,232,240,0.28); border-radius: 7px;
@@ -58,7 +61,7 @@
     font-size: 15px; line-height: 1.5;
   }
   input[type=text]:focus, textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
-  textarea { min-height: 96px; resize: vertical; }
+  textarea { min-height: 74px; resize: vertical; }
   button {
     font-family: "Crimson Pro", Georgia, serif; font-size: 17px;
     background: transparent; color: var(--gold);
@@ -71,20 +74,28 @@
   button.primary { background: var(--gold); color: var(--midnight); font-weight: 600; }
   button.primary:hover { background: var(--bone); border-color: var(--bone); }
   .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-  .readout { font-size: 17px; margin-top: 16px; min-height: 28px; }
-  .score { font-size: 40px; color: var(--gold); font-family: "JetBrains Mono", monospace; }
-  table { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 10px; }
+  .readout { font-size: 18px; margin-top: 16px; min-height: 30px; }
+  .score { font-size: 38px; color: var(--gold); font-family: "JetBrains Mono", monospace; }
+  .hint {
+    margin-top: 14px; padding: 11px 14px; border-radius: 7px;
+    background: rgba(197,160,89,0.09); border-left: 3px solid var(--gold);
+    font-size: 16px;
+  }
+  table { width: 100%; border-collapse: collapse; margin-top: 16px; }
   th { text-align: left; color: var(--dim); font-weight: 400; font-size: 14px; padding: 6px 8px; }
   td { padding: 6px 8px; border-top: 1px solid rgba(226,232,240,0.12); font-family: "JetBrains Mono", monospace; font-size: 13px; }
   td.num { text-align: right; color: var(--gold); }
   .tally { display: flex; gap: 26px; flex-wrap: wrap; margin: 18px 0; }
-  .tally div { flex: 1 1 180px; }
+  .tally div { flex: 1 1 170px; }
   .tally .cap { font-size: 15px; color: var(--dim); }
   .claim { padding: 7px 0; border-top: 1px solid rgba(226,232,240,0.12); font-size: 16px; }
-  .yes::before { content: "found  "; color: var(--gold); font-family: "JetBrains Mono", monospace; font-size: 12px; }
-  .no::before { content: "missed "; color: var(--warm); font-family: "JetBrains Mono", monospace; font-size: 12px; }
-  .warn { border-left: 3px solid var(--warm); padding-left: 16px; margin: 20px 0; color: var(--bone); }
-  hr { border: 0; border-top: 1px solid rgba(226,232,240,0.14); margin: 48px 0; }
+  .yes::before { content: "got it   "; color: var(--gold); font-family: "JetBrains Mono", monospace; font-size: 12px; }
+  .no::before { content: "missed   "; color: var(--warm); font-family: "JetBrains Mono", monospace; font-size: 12px; }
+  .warn { border-left: 3px solid var(--warm); padding-left: 16px; margin: 20px 0; }
+  details { margin: 14px 0; }
+  summary { cursor: pointer; color: var(--dim); font-size: 16px; }
+  summary:hover { color: var(--gold); }
+  hr { border: 0; border-top: 1px solid rgba(226,232,240,0.14); margin: 52px 0; }
   footer { font-size: 16px; color: var(--dim); }
   .hidden { display: none; }
   @media (max-width: 560px) {
@@ -98,60 +109,79 @@
 <main>
 
   <h1>whybox</h1>
-  <p class="lede">A closed room with a locked machine in it. You can put something in and read a number off the display. You cannot open the machine. Your job is to work out what is inside.</p>
+  <p class="lede">A guessing game that is quietly a lesson in how experiments work. Ten minutes, nothing to install, and no background knowledge needed.</p>
 
-  <p>That is a stripped-down version of experimental science, and it turns out to be a good way to find out whether someone, or something, can actually do science rather than just score well at it. Those two look identical from the outside.</p>
+  <h2>What you do</h2>
 
-  <p>Play a round below. It takes about ten minutes. Most people reach the top score long before they can explain it, which is the entire point, felt rather than read.</p>
+  <ol class="steps">
+    <li>Type a code <strong>24 letters long</strong>, using only the letters <span class="mono">A C G T</span>. For example <span class="mono">AAAAAAAAAAAAAAAAAAAAAAAA</span>.</li>
+    <li>Press <strong>Test it</strong>. A machine gives your code a score between <strong>0 and 6</strong>. Higher is better.</li>
+    <li>Nobody tells you how the score is worked out. <strong>Figuring that out is the whole game.</strong></li>
+  </ol>
 
-  <h2>The machine</h2>
+  <p>You get 15 tries. Here is the thing worth watching for: scoring well is easy, and you will probably hit the top score by accident in your first few goes. Being able to say <em>why</em> it is high is much harder. That gap between doing well and understanding is what this is really about.</p>
 
-  <p class="small dim">You are told three things and nothing else: a sequence is exactly <span class="mono">24</span> characters long, it uses only <span class="mono">A C G T</span>, and you have <span class="mono">15</span> experiments. What the number means is yours to find out.</p>
+  <p class="small dim">The rule was made up for this game. It is not real biology, so knowing biology will not help you, and not knowing any will not hold you back. Everybody starts level.</p>
+
+  <h2>Play</h2>
 
   <div class="panel">
-    <p class="small dim" style="margin-bottom:18px">
-      Rule commitment <span class="mono" id="commitment">computing…</span><br>
-      <span style="font-size:15px">This is a fingerprint of the hidden rule, shown before you start. It cannot tell you the rule. It does prove the rule is not changing while you play, and that you cannot decide afterwards you had it all along. Check it against the one revealed at the end.</span>
-    </p>
+    <p class="small" id="progress" style="margin-bottom:16px">Try 1 of 15</p>
 
-    <p class="small" id="progress">Experiment 1 of 15</p>
-
-    <label for="seq">Your sequence</label>
+    <label for="seq">Your code <span class="why">24 letters, only A, C, G or T</span></label>
     <input type="text" id="seq" spellcheck="false" autocomplete="off"
-           maxlength="24" placeholder="24 characters from A, C, G, T">
+           maxlength="24" placeholder="AAAAAAAAAAAAAAAAAAAAAAAA">
 
     <div class="row" style="margin-top:14px">
       <button type="button" class="primary" id="test">Test it</button>
       <button type="button" id="random">Give me a random one</button>
-      <button type="button" id="repeat">Repeat my last one</button>
+      <button type="button" id="repeat">Reuse my last one</button>
     </div>
 
     <div class="readout" id="readout" role="status" aria-live="polite"></div>
+    <div class="hint" id="hint">Not sure how to start? Try the same letter 24 times, like the example above. Simple codes are easier to learn from than complicated ones.</div>
 
     <table id="history-table" class="hidden">
-      <thead><tr><th>#</th><th>sequence</th><th style="text-align:right">score</th></tr></thead>
+      <thead><tr><th>try</th><th>code</th><th style="text-align:right">score</th></tr></thead>
       <tbody id="history"></tbody>
     </table>
+
+    <details style="margin-top:20px">
+      <summary>Why is there a long row of letters and numbers below?</summary>
+      <p class="small" style="margin-top:10px">It is a fingerprint of the hidden rule, shown before you start. It cannot tell you what the rule is. It exists so the rule cannot be swapped halfway through, and so nobody can claim afterwards that they knew it all along. At the end you will see the same fingerprint again, and it should match.</p>
+      <p class="mono small" id="commitment">computing…</p>
+    </details>
   </div>
 
-  <h3>Your notebook</h3>
-  <p class="small dim">Write what you currently think the rule is, and what the next experiment would show if you are wrong. This is not busywork: a theory you never wrote down is one you can quietly revise after the fact, which is the most common way an investigation fails.</p>
+  <h2>Your notes</h2>
+
+  <p class="small">Two questions, not one. Most people only ever ask the first, and that is the single most common reason people get stuck on puzzles like this one.</p>
+
   <div class="panel">
-    <label for="notes">Notes as you go</label>
-    <textarea id="notes" placeholder="Round 1: all A scored 6. That is the top already, which is suspicious."></textarea>
-    <div class="row" style="margin-top:12px">
-      <button type="button" id="download">Download my notebook</button>
+    <label for="notes-up">What seems to make the score go <strong>up</strong>?</label>
+    <textarea id="notes-up" placeholder="All A scored 6. That is the highest possible, on my first try."></textarea>
+
+    <label for="notes-down" style="margin-top:18px">What seems to make the score go <strong>down</strong>?</label>
+    <textarea id="notes-down" placeholder="I have not tested anything that scores badly on purpose yet."></textarea>
+
+    <div class="row" style="margin-top:14px">
+      <button type="button" id="download">Download my notes</button>
     </div>
   </div>
 
-  <h3>When you are ready</h3>
+  <h2>When you are ready</h2>
+
+  <p class="small">Say what you think the rule is, in your own words. Good enough means someone else could use your description to predict the score of a code you never tried. "I could not work it out" is a perfectly respectable answer and a better one than a confident guess.</p>
+
   <div class="panel">
-    <label for="theory">State the rule, in plain words, specific enough that someone could predict the score of a sequence you never tried</label>
-    <textarea id="theory" placeholder="I do not know is a better answer than a confident guess."></textarea>
+    <label for="theory">The rule, as best you can tell</label>
+    <textarea id="theory" placeholder="I think the score depends on…"></textarea>
     <div class="row" style="margin-top:12px">
-      <button type="button" class="primary" id="reveal">Submit and see the rule</button>
+      <button type="button" class="primary" id="reveal">Show me the answer</button>
     </div>
+
     <p id="nudge" class="small hidden" style="color:var(--warm)" role="status" aria-live="polite"></p>
+
     <div id="verdict" class="hidden">
       <div class="tally">
         <div>
@@ -159,52 +189,58 @@
           <div class="score" id="final-score">0</div>
         </div>
         <div>
-          <div class="cap">true things you stated, out of 4</div>
+          <div class="cap">parts of the rule you described, out of 4</div>
           <div class="score" id="final-claims">0</div>
         </div>
       </div>
       <div id="claims"></div>
-      <h3>What was actually going on</h3>
+      <h3>The rule</h3>
       <p id="rule-text" class="small"></p>
-      <p class="small dim">Revealed rule fingerprint <span class="mono" id="commitment-check"></span><br>
-      <span style="font-size:15px">It should match the one shown before you started.</span></p>
+      <p class="small dim">Fingerprint <span class="mono" id="commitment-check"></span>, which should match the one from before you started.</p>
       <div class="warn small">
-        <p style="margin:0 0 10px"><strong>Do not trust the second number too much.</strong> It is produced by looking for certain phrases in what you wrote. A sentence containing those phrases and nothing else scores four out of four, having run no experiments at all.</p>
-        <p style="margin:0 0 10px">That weakness is published rather than hidden, and the same command exists in the toolkit: <span class="mono">whybox audit codon-lite</span> attacks the grading and reports what the attack scores. Here, it scores everything.</p>
-        <p style="margin:0"><strong>It fails the other way too.</strong> If you understood the machine and described it in words the check does not recognize, it will mark you down for being original. Read the real rule above against your own sentence. That comparison is the actual result; the number is a rough instrument.</p>
+        <p style="margin:0 0 10px"><strong>Do not take that second number too seriously.</strong> It is worked out by searching your sentence for certain words. Write those words and nothing else and it gives you full marks, even having run no tests at all. Describe the rule correctly in words it does not recognize and it will mark you down for being original.</p>
+        <p style="margin:0">So read the real rule above against your own sentence. That comparison is the actual result. The number is a blunt instrument, and we say so rather than pretending otherwise.</p>
       </div>
     </div>
   </div>
 
   <hr>
 
-  <h2>What you just played</h2>
+  <h2>Read this after you have played</h2>
 
-  <p>One sandbox out of an open-ended family. A sandbox has three parts: <strong>specimens</strong>, the things you can submit; an <strong>assay</strong>, the measurement; and an <strong>oracle</strong>, the sealed machine that runs it and hands back a small report. Hiding the oracle is what forces you to infer rather than look up.</p>
+  <h3>What was the point of that?</h3>
 
-  <p>Oracles come in three temperatures. A <strong>wet</strong> one runs a real experiment: real, slow, expensive, and nobody knows the right answer. A <strong>damp</strong> one runs a computer model trained on real measurements: fast, and wrong in whatever ways the model is wrong. A <strong>dry</strong> one, like this, runs a rule somebody invented: no biology in it at all, so nothing you find here is a discovery about nature. In exchange, the answer is known exactly, which is the only way your claims can be graded rather than argued about.</p>
+  <p>Real experimental science looks a lot like what you just did. Nature does not hand over its rules. You poke at something, write down what comes back, guess at the pattern, and poke again in a way that would show you up if your guess is wrong. The last part is the one people skip.</p>
 
-  <h2>Two things to know before trusting any number here</h2>
+  <p>Notice what happened to your two numbers. If you got a high score early and still could not describe the rule, you found the thing this whole project is built around: <strong>doing well and understanding are not the same, and from the outside they look identical.</strong> That matters well beyond a browser game. It is the reason a computer model can predict something accurately while telling you nothing about why, and the reason an AI system can top a leaderboard without having understood the problem at all.</p>
 
-  <p><strong>In a browser, nothing is hidden.</strong> This page runs on your own machine, so the rule is readable in developer tools by anyone who thinks to look. That is a property of browsers, not an oversight. What is protected instead is the part that matters for an experiment: the commitment fingerprint means the rule cannot change while you play. The Python version runs the rule in a separate process, which is better, and still not a security boundary.</p>
+  <h3>The three parts of a setup like this</h3>
 
-  <p><strong>The understanding score is word matching.</strong> See the warning above. It is a rough instrument, published with its own weakness measured.</p>
+  <p>Any version of this game has the same three pieces. The things you submit, here a 24-letter code. The measurement that gets made on them. And the sealed machine that runs the measurement and hands back a number, usually called an <strong>oracle</strong>. Keeping the oracle shut is what forces you to work the rule out rather than look it up.</p>
 
-  <h2>The full toolkit</h2>
+  <p>Oracles come in three kinds. A <strong>wet</strong> one runs a genuine experiment in a lab: real, slow, expensive, and nobody knows the right answer in advance. A <strong>damp</strong> one runs a computer model trained on real measurements: much faster, and wrong in whatever ways the model is wrong. A <strong>dry</strong> one, like the one you just played against, runs a rule somebody invented. There is no biology in it, so nothing you found is a discovery about the world. In exchange, the answer is known exactly, which is the only reason your description could be checked at all.</p>
 
-  <p>This page is one world with one investigator: you. The Python package runs the same thing with a fixed number of rounds, a lab notebook, baselines that optimize without understanding, and a grader that keeps the two numbers apart on purpose. It has no dependencies, which is deliberate: there is no environment to debug in week one.</p>
+  <h3>Two things we are not pretending about</h3>
+
+  <p><strong>Nothing is really hidden in a web page.</strong> This page runs on your own computer, so somebody who knows where to look can read the rule straight out of it. That is how browsers work and we did not find a way around it. What the fingerprint does protect is narrower and still worth having: the rule could not change while you played.</p>
+
+  <p><strong>The scoring of your description is crude.</strong> See the warning above. It is published with its own weakness measured rather than quietly hoped over.</p>
+
+  <h3>If you want to go further</h3>
+
+  <p>This page is one puzzle with one player. The full version is a Python package that runs the same thing with a proper lab notebook, automatic opponents that chase a high score without ever understanding anything, and grading that keeps the two numbers apart on purpose. It has no dependencies, so there is no setup to go wrong.</p>
 
   <div class="panel">
     <p class="mono small" style="margin:0">git clone https://github.com/phagehunter/whybox.git<br>cd whybox<br>python3 -m whybox run codon-lite --agent human --rounds 15</p>
   </div>
 
-  <p class="small">Write your own sandbox, and the only real requirement is a system where you know the rule and the investigator does not. <a href="https://github.com/phagehunter/whybox/blob/main/docs/adding-a-sandbox.md">The guide</a> is short. The interesting sandboxes are the ones where a capable investigator fails in a way you can explain.</p>
+  <p class="small">You can also write your own puzzle. The only real requirement is a system where you know the rule and the player does not. <a href="https://github.com/phagehunter/whybox/blob/main/docs/adding-a-sandbox.md">The guide</a> is short, and the interesting puzzles are the ones where a clever player fails in a way you can explain.</p>
 
   <hr>
 
   <footer>
-    <p>Built by <a href="https://curtishoffmann.com">Curtis Hoffmann</a>. Source and documentation at <a href="https://github.com/phagehunter/whybox">github.com/phagehunter/whybox</a>, MIT licensed.</p>
-    <p>The science sandbox framework is not mine. It comes from <em>Science sandboxes measure the scientific capability of AI agents</em> by Rao, Castro, Gosai, Hsu, Ektefaie, Singh, Bhatia, Reilly, Tewhey, Lander and Sabeti (arXiv:2608.30165, 2026). This is an independent implementation of their ideas, not authored or endorsed by them. <a href="https://github.com/asr2210/science-sandbox">Their own code is here.</a></p>
+    <p>Built by <a href="https://curtishoffmann.com">Curtis Hoffmann</a>. Code and documentation at <a href="https://github.com/phagehunter/whybox">github.com/phagehunter/whybox</a>, MIT licensed.</p>
+    <p>The idea behind this is not mine. It comes from <em>Science sandboxes measure the scientific capability of AI agents</em> by Rao, Castro, Gosai, Hsu, Ektefaie, Singh, Bhatia, Reilly, Tewhey, Lander and Sabeti (arXiv:2608.30165, 2026). This is an independent implementation of their ideas, not authored or endorsed by them. <a href="https://github.com/asr2210/science-sandbox">Their own code is here.</a></p>
   </footer>
 
 </main>
@@ -215,11 +251,7 @@
   "use strict";
   var api = window.whybox;
   var MAX_ROUNDS = 15;
-  var round = 0;
-  var best = 0;
-  var last = "";
-  var log = [];
-
+  var round = 0, best = 0, last = "", log = [];
   var el = function (id) { return document.getElementById(id); };
   var seqInput = el("seq");
 
@@ -241,19 +273,52 @@
     el("commitment-check").textContent = shown;
   });
 
+  // Coaching, by how far in you are. These are the habits the game is meant
+  // to teach, said out loud rather than left for a student to stumble on.
+  function hintFor(n) {
+    if (n === 0) {
+      return "Not sure how to start? Try the same letter 24 times, like the " +
+             "example above. Simple codes are easier to learn from than " +
+             "complicated ones.";
+    }
+    if (n < 3) {
+      return "Try another simple one, perhaps 24 of a different letter. Two " +
+             "simple results you can compare are worth more than one " +
+             "complicated result you cannot.";
+    }
+    if (n < 6) {
+      return "Now change just one letter from a code you have already " +
+             "tested, and see whether the score moves. Changing one thing at " +
+             "a time is the whole trick: change two and you will not know " +
+             "which one mattered.";
+    }
+    if (n < 10) {
+      return "Have you deliberately tried to make the score drop? Knowing " +
+             "what makes it bad is as useful as knowing what makes it good, " +
+             "and most people never try.";
+    }
+    if (n < MAX_ROUNDS) {
+      return "Write down your rule now, before your tries run out. Then " +
+             "spend what is left trying to prove yourself wrong. A rule that " +
+             "survives that is worth something.";
+    }
+    return "That was your last try. Write what you think the rule is below, " +
+           "then see the answer.";
+  }
+
   function updateProgress() {
     var left = MAX_ROUNDS - round;
     el("progress").textContent = left > 0
-      ? "Experiment " + (round + 1) + " of " + MAX_ROUNDS
-      : "All " + MAX_ROUNDS + " experiments used. State the rule below.";
+      ? "Try " + (round + 1) + " of " + MAX_ROUNDS
+      : "All 15 tries used. Write your rule below.";
     el("test").disabled = left <= 0;
     el("random").disabled = left <= 0;
     el("repeat").disabled = left <= 0 || !last;
+    el("hint").textContent = hintFor(round);
   }
 
   function addRow(sequence, score) {
-    var table = el("history-table");
-    table.classList.remove("hidden");
+    el("history-table").classList.remove("hidden");
     var tr = document.createElement("tr");
     var cells = [String(round), sequence, String(score)];
     for (var i = 0; i < cells.length; i++) {
@@ -270,7 +335,7 @@
     var problem = api.validate(sequence);
     if (problem) {
       el("readout").innerHTML = '<span style="color:var(--warm)">' + problem +
-        "</span> That is a format mistake, so it did not cost you an experiment.";
+        "</span> That is just a typo, so it has not used up a try.";
       return;
     }
     round++;
@@ -278,7 +343,8 @@
     var score = api.measure(sequence);
     if (score > best) best = score;
     log.push({ round: round, sequence: sequence, score: score });
-    el("readout").innerHTML = 'The machine returns <span class="score">' + score + "</span>";
+    el("readout").innerHTML = 'Score <span class="score">' + score +
+      '</span> <span class="dim small">out of ' + api.ceiling() + "</span>";
     addRow(sequence, score);
     updateProgress();
     seqInput.value = "";
@@ -301,13 +367,10 @@
   el("reveal").addEventListener("click", function () {
     var statement = el("theory").value.trim();
     if (!statement) {
-      // This message goes in its own element. Writing it into the verdict
-      // would wipe the results markup, and the student could then never see
-      // their own result. That bug shipped once; it is not shipping twice.
       var nudge = el("nudge");
-      nudge.textContent = "Write something first, even if it is \"I could not " +
-        "work it out.\" Reading the answer before committing to a guess is the " +
-        "one move that teaches you nothing.";
+      nudge.textContent = "Write something first, even if it is only \"I could " +
+        "not work it out.\" Reading the answer before committing to a guess is " +
+        "the one move that teaches you nothing.";
       nudge.classList.remove("hidden");
       el("theory").focus();
       return;
@@ -330,17 +393,21 @@
   });
 
   el("download").addEventListener("click", function () {
-    var lines = ["# whybox lab notebook", "", "Sandbox: codon-lite, in the browser", ""];
-    lines.push("## Experiments", "");
+    var lines = ["# My whybox notes", "", "## What I tried", ""];
     for (var i = 0; i < log.length; i++) {
-      lines.push("- " + log[i].round + ". `" + log[i].sequence + "` scored " + log[i].score);
+      lines.push("- Try " + log[i].round + ": `" + log[i].sequence +
+                 "` scored " + log[i].score);
     }
-    lines.push("", "## Notes", "", el("notes").value || "(none written)");
-    lines.push("", "## Rule as stated", "", el("theory").value || "(not stated)");
+    lines.push("", "## What seemed to raise the score", "",
+               el("notes-up").value || "(nothing written)");
+    lines.push("", "## What seemed to lower the score", "",
+               el("notes-down").value || "(nothing written)");
+    lines.push("", "## The rule, as I described it", "",
+               el("theory").value || "(not written)");
     var blob = new Blob([lines.join("\n")], { type: "text/markdown" });
     var link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "whybox-notebook.md";
+    link.download = "whybox-notes.md";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
