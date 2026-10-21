@@ -1,0 +1,31 @@
+# whybox
+
+> A ten-minute browser game by Curtis Hoffmann that is quietly a lesson in how experiments work. The player types a 24-letter code using only A, C, G and T, a sealed "machine" returns a score from 0 to 6, and nobody says how the score is worked out. Working that out is the whole game. Fifteen tries, nothing to install, no background knowledge needed.
+
+Site: https://curtishoffmann.com/whybox/
+Source (the page, the Python package and the tests): https://github.com/phagehunter/whybox
+
+## What the page contains (one page, in order)
+
+- What you do: the three rules of the game.
+- Play: the code box, the score, the fingerprint of the hidden rule shown before the first test so the rule cannot change mid-game.
+- Your notes: a scratch pad for hypotheses.
+- When you are ready: write the rule in your own words, then reveal the answer and two numbers, the best score out of 6 and the parts of the rule described out of 4. The page says plainly that the second number is a crude keyword match.
+- Read this after you have played: why doing well and understanding are different things, the three parts of any setup like this (what you submit, the measurement, the sealed oracle), what is and is not hidden in a web page, and how to go further with the Python package.
+
+## The hidden rule (spoiler)
+
+The sequence is read in groups; each group becomes one of two kinds of bead; the chain folds on a square grid; the score counts how many sticky beads end up touching other sticky beads. The rule is invented for the game and is not real biology.
+
+## Background
+
+- The idea comes from "Science sandboxes measure the scientific capability of AI agents" (Rao, Castro, Gosai, Hsu, Ektefaie, Singh, Bhatia, Reilly, Tewhey and colleagues); the page credits it and links https://github.com/asr2210/science-sandbox.
+- The full version is a Python package in the same repository: `python -m whybox run codon-lite --agent human --rounds 15`. It adds a lab notebook, automatic opponents that chase a high score without understanding, and grading that keeps score and insight apart. The browser version is cross-checked against the Python version by a test.
+- Status: scaffolding with one complete example sandbox.
+
+## License and contact
+
+- Code and documentation: MIT License.
+- Author: Curtis Hoffmann, https://curtishoffmann.com/
+- Issues: https://github.com/phagehunter/whybox/issues
+- Sitemap: https://curtishoffmann.com/whybox/sitemap.xml
