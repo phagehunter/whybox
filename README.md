@@ -8,10 +8,10 @@ A science sandbox is a closed room with a locked machine in it. You can put
 something into the machine and read a number off the display. You cannot open
 the machine. Your job is to work out what is inside.
 
-That is a stripped-down version of experimental science, and it turns out to
-be a good way to test whether an AI agent can actually do science, as opposed
-to being good at getting a high score. Those two things look identical from the
-outside, and a sandbox is built to tell them apart.
+This is a simplified version of experimental science. It can be used to test
+whether an AI agent works out how a system behaves or only learns to produce a
+high score, two outcomes that look the same from the outside and that a sandbox
+is designed to separate.
 
 This repository is the plumbing: a way to write one of these rooms, run an
 investigator inside it, and grade what came out.
@@ -40,12 +40,9 @@ positions do nothing, or what the number was counting. It scored well and
 learned nothing, and the run record says so in two separate numbers that are
 never averaged together.
 
-Every sandbox in this framework is built to make that gap visible.
-
 ## Two things to know before you trust a number from this
 
-Both are stated here rather than buried, because both limit what the numbers
-mean.
+Both limit what the numbers mean.
 
 **The sealed wall is a process boundary, not a security boundary.** The hidden
 rule runs in a separate operating-system process, so an investigator cannot
@@ -54,7 +51,7 @@ machine can still read the sealed folder off the disk. Running this against a
 capable agent needs real isolation, which is not built.
 
 **The understanding score is word matching, and it can be fully inflated.**
-We ship the attack rather than waiting for someone to find it:
+The repository includes a command that runs this attack:
 
 ```bash
 python -m whybox audit codon-lite
@@ -75,19 +72,18 @@ Every sandbox has the same three parts, whatever science it is about.
 | **assay** | the measurement performed on them | fold it, count the sticky contacts |
 | **oracle** | the sealed machine that runs the assay | `sandboxes/codon-lite/oracle.py` |
 
-Oracles come in three temperatures, and the choice is the most consequential
-one a sandbox author makes:
+Oracles come in three temperatures:
 
-- **wet** - a real physical experiment. Real, slow, expensive, noisy. Nobody
-  can tell you the right answer, because nobody knows it.
+- **wet** - a real physical experiment, which is slow, expensive and noisy,
+  and for which nobody knows the right answer in advance.
 - **damp** - a computer model trained on real measurements. Fast enough to run
   thousands of times, and wrong in whatever ways the model is wrong.
 - **dry** - a rule somebody invented. No biology in it at all, so nothing found
   is a discovery about nature. In exchange you know the exact right answer,
   which means claims can be graded instead of argued about.
 
-The example sandbox is dry, because a dry sandbox is the only kind that can
-demonstrate the framework honestly on a laptop in ten seconds.
+The example sandbox is dry, because only a dry sandbox has an exactly known
+answer and runs on a laptop in about ten seconds.
 
 ## Layout
 
@@ -113,7 +109,7 @@ leaderboard/             collected rows, with the two baselines already in
 docs/                    architecture, and how to add your own sandbox
 ```
 
-## Play it in a browser, right now
+## Play it in a browser
 
 **<https://curtishoffmann.com/whybox>** runs one sandbox with no install, no
 account, and no Python. Submit a sequence, read one number, and work out what
@@ -169,12 +165,12 @@ See [docs/adding-a-sandbox.md](docs/adding-a-sandbox.md). The short version:
 copy `sandboxes/codon-lite/`, write three methods on the oracle class, put
 anything secret in `sealed/`, and run `whybox check` until it passes.
 
-A sandbox is a research contribution in its own right. The interesting ones
-are the ones where a smart investigator fails in a way you can explain.
+A new sandbox is a research contribution in its own right; see the guide for
+what makes one useful.
 
 ## What is deliberately missing
 
-Honest list of what this scaffolding does **not** do yet:
+This scaffolding does not yet do the following:
 
 - **No real model agent.** `agents/claude_agent.py` shows the shape and makes
   the API calls, but has no retries, no cost tracking, no resuming, and no

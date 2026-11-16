@@ -177,8 +177,7 @@ def audit_rubric(sandbox_directory: str) -> Dict[str, Any]:
             "evidence only when a person or a second model has read the notebook."
             if inflatable else
             "The word-matching grade resists pure keyword stuffing on %d of %d "
-            "claims, which is better than most. It is still not evidence of "
-            "understanding on its own." % (total - found, total)),
+            "claims. It is still not evidence of understanding on its own." % (total - found, total)),
     }
 
 

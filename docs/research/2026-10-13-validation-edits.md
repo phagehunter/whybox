@@ -16,8 +16,8 @@ collision was bad because of what it collided with: both projects are Python,
 both say "sandbox," and the two meanings sit one search result apart.
 
 Twenty-five candidates were checked for availability. The project lead chose
-**whybox**, on 2026-10-13. It states the thesis rather than the mechanism: the
-score is the what, and this project exists for the why. The package name, the
+**whybox**, on 2026-10-13. The name refers to the project's purpose: the
+score says what an investigator achieved, and the project asks why. The package name, the
 command, the module, and the canary marker all changed with it.
 
 ## Adopted, and implemented now
@@ -91,8 +91,8 @@ Python dependencies to update.
 
 ## Adopted, documented, not yet built
 
-These passed the tests but are features rather than fixes, and the brief was
-to validate rather than to expand.
+These passed the tests but are new features, and this review was limited to
+fixes.
 
 - **Repeat every result over at least three seeds** and report a trimmed mean,
   the way the large machine-learning benchmarks do. The row already records
@@ -146,13 +146,12 @@ package index as the primary way people get it.
 navigation a student has to learn before they reach the thing.
 
 **Type checking as a blocking gate, coverage thresholds, code owners,
-governance and funding files, pull request templates.** Solo-project ceremony.
-Reviewers do not expect them at this size and they read as process theater.
+governance and funding files, pull request templates.** Reviewers do
+not expect these on a one-maintainer project of this size.
 
 **Containers for the oracle.** The correct answer for evaluating a capable
-agent, and the wrong answer for a student's first ten minutes. The honest
-move is the one taken: say in the readme exactly what the current wall does
-and does not stop.
+agent, and the wrong answer for a student's first ten minutes. Instead, the
+README states exactly what the current wall does and does not stop.
 
 **Writing a general task standard.** Two serious attempts are archived and
 point users elsewhere, and a third is in maintenance mode. The lesson is to

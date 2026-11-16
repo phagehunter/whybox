@@ -163,13 +163,13 @@
 
   function validate(sequence) {
     if (sequence.length !== SEQUENCE_LENGTH) {
-      return "A sequence must be exactly " + SEQUENCE_LENGTH +
-             " characters. That one has " + sequence.length + ".";
+      return "Your code needs exactly " + SEQUENCE_LENGTH +
+             " letters. That one has " + sequence.length + ".";
     }
     for (var i = 0; i < sequence.length; i++) {
       if (ALPHABET.indexOf(sequence.charAt(i)) < 0) {
-        return "This world only uses the characters A, C, G and T. " +
-               "Yours contains " + sequence.charAt(i) + ".";
+        return "Use only the letters A, C, G and T. " +
+               "Your code contains " + sequence.charAt(i) + ".";
       }
     }
     return null;

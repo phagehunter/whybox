@@ -37,8 +37,8 @@ it differently, which is itself worth watching.
 **The report is small on purpose.** The oracle knows the per-specimen results,
 which of its tests were hard, and exactly which rule produced the number. It
 returns a handful of numbers. A sandbox that hands back everything it knows is
-not testing much. Deciding what the report contains is the single biggest
-design decision in a sandbox, and it belongs to the author, not the toolkit.
+not testing much. Deciding what the report contains is a central design
+decision, and it belongs to the author, not the toolkit.
 
 **The answer key comes out after the last round, never during.** The runner
 starts a second oracle process with a `--reveal` flag only once the
@@ -58,8 +58,8 @@ So the oracle speaks one line of JSON at a time through a pipe:
 <-  {"ok":true,"result":{"scores":{"fitness":5.0}}}
 ```
 
-That is a wall you can point at and explain to a reviewer, which matters more
-than cleverness here.
+A pipe carrying one JSON line at a time is a boundary that is easy to inspect
+and explain to a reviewer.
 
 It is **not** a security boundary. An investigator that can run shell commands
 on the same machine can read `sealed/` off the disk. Running against a serious
@@ -138,9 +138,9 @@ runs/codon-lite__hillclimb__2026-10-13T1404/
 human-readable argument. Keeping them separate is what makes it possible to
 ask "did the score go up?" and "did it understand why?" independently.
 
-Append-only matters more than it looks. A notebook rewritten at the end reads
-like a clean story that was never lived. The abandoned theory from round nine
-is evidence, and it is often the most informative thing in the folder.
+The notebook is append-only because a notebook rewritten at the end hides how
+the theory developed. An abandoned theory is evidence, and it is often the most
+informative entry in the folder.
 
 ## Oracle temperature, and what each one costs
 

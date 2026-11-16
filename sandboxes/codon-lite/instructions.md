@@ -48,9 +48,8 @@ In each entry, write down:
 
 ## Four habits, stated up front
 
-You are being taught these rather than left to discover them. They are what
-separates an experiment from a guess, and they are worth more than any
-particular result you will get here.
+These habits are stated up front because they distinguish an experiment from a
+guess.
 
 **Change one thing at a time.** If you change two things and the number moves,
 you have learned that something moved it, which is nearly nothing. The
@@ -63,9 +62,9 @@ theory is wrong. An experiment whose result you cannot be surprised by was not
 worth spending.
 
 **Change the theory, not the evidence.** When a result contradicts what you
-believed, the belief is what moves. Explaining a result away is the single
-most common way an investigation fails, and it almost never feels like failure
-at the time. It feels like having a good reason.
+believed, the belief is what moves. Explaining a result away is a common
+way for an investigation to fail, and at the time it usually feels like having
+a good reason.
 
 **A negative result is a result.** Showing that something does not matter is
 as useful as showing that something does, and often harder to get. Half the

@@ -12,10 +12,10 @@ the bead rule live in `sealed/` and the investigator never sees them.
 
 ## Why it is built this way
 
-The score ceiling is easy to reach and the rule is hard to state. That gap is
-the entire point. An investigator can hit the maximum within a few rounds by
-trying repeated characters, which means the score alone cannot tell you
-whether anything was understood. Only the notebook can.
+The score ceiling is easy to reach and the rule is hard to state. Because an
+investigator can reach the maximum within a few rounds by trying repeated
+characters, the score alone cannot show whether anything was understood; the
+notebook has to be read.
 
 ## Two worlds, one change
 
@@ -38,17 +38,16 @@ difference in results is a difference in the rule, not the chemistry.
 
 `hillclimb` optimizes without understanding. Over 40 rounds it reaches 5 of a
 possible 6 and states none of the four true claims about the rule. Random
-guessing reaches 6. That contrast is what a real investigator has to beat, and
-it is the second column that has to move, not the first.
+guessing reaches 6. A real investigator has to improve on the second number,
+not the first.
 
-## How honest is the grading here
+## How far the grading can be inflated
 
     python -m whybox audit codon-lite
 
 **4 of 4.** A notebook containing this sandbox's answer-key vocabulary and no
 experiments at all collects the full understanding score. The word-matching
-grade on this sandbox is therefore not evidence on its own, and that number is
-published here rather than left for someone else to discover.
+grade on this sandbox is therefore not evidence on its own.
 
 ## Versions
 

@@ -5,7 +5,7 @@ fails today.
 
 ## Three findings that change the plan
 
-**The stated Python floor is dead.** Python 3.9 reached end of life on
+**The stated Python floor is past end of life.** Python 3.9 reached end of life on
 2025-10-31, and 3.10 follows on 2026-10-01, within weeks of this writing.
 [SPEC 0](https://scientific-python.org/specs/spec-0000/), the scientific
 Python community's successor to the old NEP 29 policy, recommends supporting

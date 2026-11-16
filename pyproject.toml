@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "whybox"
 version = "0.1.0"
-description = "Build, run, and grade science sandboxes: closed worlds where you must infer the hidden rule, graded on the score AND on whether you worked out why."
+description = "Build, run, and grade science sandboxes: closed worlds where the hidden rule must be inferred, with the score and the stated understanding graded separately."
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"

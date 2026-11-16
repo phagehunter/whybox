@@ -38,9 +38,9 @@ Sandboxes carry their own separate two-part versions, explained in
   changes as the tries run down, and all of the conceptual material moved
   below the game rather than in front of it.
 - Two notes boxes on that page rather than one, asking separately what raises
-  the score and what lowers it. Asking only the first is the most common
-  reason people stall on a puzzle like this, and it is the largest documented
-  effect in the research on these games.
+  the score and what lowers it. Asking for both follows the research finding
+  that naming the complementary category raises solution rates (see
+  docs/research/2026-10-13-thread3-teaching.md).
 - Tests that run both implementations and compare them, both on scores and on
   how they grade a stated rule, so the two cannot drift apart.
 
@@ -73,7 +73,7 @@ Sandboxes carry their own separate two-part versions, explained in
 
 ### Known limits
 
-- The understanding score is word matching and is fully inflatable. The audit
-  command exists to make that measurable rather than deniable.
+- The understanding score is word matching and is fully inflatable. `whybox audit`
+  measures how far it can be inflated.
 - The sealed wall is a process boundary, not a security boundary.
 - Results are single runs. Reporting a spread over several seeds is not built.

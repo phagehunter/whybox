@@ -26,8 +26,8 @@ it into their notebook. At the end, the revealed rule must hash to the same
 value. This does not stop a determined student from looking, and it is not
 meant to. It preserves the two properties that actually matter for teaching:
 the oracle cannot change the rule once play has started, and a student cannot
-claim afterwards that they had it all along. Honesty about which property is
-being protected is the point.
+claim afterwards that they had it all along. The documentation should state
+which of these properties is protected and which is not.
 
 ## How to reach students, ranked
 
@@ -59,8 +59,8 @@ being protected is the point.
 This puzzle is old and well studied, and four findings bear directly on our
 instructions.
 
-**1. Name the complement, and say it out loud.** The single largest known
-effect in this literature. Reframing the classic number-sequence task so that
+**1. Name the complement.** This is among the largest effects reported in
+this literature. Reframing the classic number-sequence task so that
 the player hunts for two labeled, complementary categories rather than one
 rule raised solution rates from roughly a fifth of participants to over half.
 Later work showed the gain comes specifically from players generating an
@@ -69,8 +69,8 @@ instance of the contrasting category.
 category label alongside the number, and ask the notebook for both the rule
 for high scores and the rule for low ones.
 
-**2. Positive testing is not a bias, it is a reasonable strategy that fails in
-one specific setup.** Klayman and Ha showed it only misfires when the true
+**2. Positive testing is a reasonable strategy that fails in one specific
+setup.** Klayman and Ha showed it only misfires when the true
 rule is strictly broader than the learner's guess, which is exactly how the
 classic task was built. Teaching students that they are simply biased is
 therefore the wrong lesson. Ship some worlds where the true rule is narrower
@@ -92,7 +92,7 @@ minus a penalty for each wrong guess. Without a cost, players spray guesses
 instead of designing experiments. Adopt the shape and print the running cost
 each turn.
 
-**5. Order the worlds by measured difficulty, not by vibes.** That same
+**5. Order the worlds by measured difficulty.** That same
 benchmark computes complexity metrics over its rules, but only after the fact.
 We can do it before.
 

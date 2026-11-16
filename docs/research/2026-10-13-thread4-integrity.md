@@ -78,7 +78,7 @@ Three concrete consequences:
 - **A model-graded number is not reproducible** across grader versions, so two
   rows may have been measured with different instruments.
 
-The honest fix is not to abandon the design but to add a gate: a score floor
+The fix is to keep the design and add a gate: a score floor
 to be listed at all, a published tie-break, the stuffing baseline as the
 floor, and the grader version in every row.
 
