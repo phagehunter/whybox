@@ -4,7 +4,7 @@ What the established runners do about the three problems we also have: letting
 outsiders add a task, keeping the answer away from the thing being tested, and
 versioning so old scores stay meaningful.
 
-## The landscape, and a warning in it
+## Existing harnesses and their status
 
 | Project | Status as of October 2026 |
 |---|---|
@@ -22,12 +22,11 @@ versioning so old scores stay meaningful.
 
 The warning is the archive column. Two serious attempts at a general task
 standard are now archived and redirect to Inspect. A third is in maintenance
-mode and a fourth stopped accepting contributions. **Writing a new standard is
-the thing that keeps failing in this field.** The sensible posture is to be a
+mode and a fourth stopped accepting contributions. The sensible posture is to be a
 small, opinionated teaching tool that can also hand its sandboxes to Inspect,
 not a rival runner.
 
-## The one genuinely good piece of news
+## The hidden-rule niche is unoccupied
 
 The hidden-rule niche is essentially unoccupied. The nearest work is
 [ZendoWorld](https://github.com/ml-research/ZendoWorld) at one star,
@@ -37,8 +36,9 @@ displace, which is unusual and worth saying out loud in the readme.
 
 ## How outsiders add a task
 
-The field converged, then moved again, and the second move is the one that
-matters to us.
+Projects first converged on a manifest plus a code file, then moved to keeping
+third-party code out of the main repository; the second change matters more
+here.
 
 **First convergence: a manifest plus a code file.** lm-evaluation-harness uses
 `lm_eval/tasks/<dataset>/<task>.yaml` with a `metadata.version` integer.
@@ -54,9 +54,9 @@ Evals made the same decision and stalled anyway. The reason is maintenance
 cost: every accepted code contribution is a thing the maintainer must keep
 working forever.
 
-For us, this is a design instruction rather than a nicety. We decided to start
-with one repository holding all sandboxes. That is fine at one sandbox and
-becomes the thing that kills the project at twenty. The cheap insurance is to
+This has a direct design consequence. We decided to start with one repository
+holding all sandboxes, which is workable at one sandbox and becomes a
+maintenance burden at twenty. The cheap insurance is to
 make a sandbox discoverable through a declared entry point rather than by
 scanning a folder, so that an outside sandbox is possible later without
 redesigning anything.

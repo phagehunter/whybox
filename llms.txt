@@ -1,6 +1,6 @@
 # whybox
 
-> A ten-minute browser game by Curtis Hoffmann that is quietly a lesson in how experiments work. The player types a 24-letter code using only A, C, G and T, a sealed "machine" returns a score from 0 to 6, and nobody says how the score is worked out. Working that out is the whole game. Fifteen tries, nothing to install, no background knowledge needed.
+> A ten-minute browser game by Curtis Hoffmann that teaches how experiments work. The player types a 24-letter code using only A, C, G and T, a sealed "machine" returns a score from 0 to 6, and the player has to work out how the score is calculated. There are fifteen tries; nothing needs installing and no background knowledge is assumed.
 
 Site: https://curtishoffmann.com/whybox/
 Source (the page, the Python package and the tests): https://github.com/phagehunter/whybox

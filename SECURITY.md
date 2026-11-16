@@ -13,7 +13,7 @@ and documented limit, not a vulnerability.
 [The architecture notes](docs/2026-10-13-architecture.md) explain what real
 isolation would require.
 
-**Grading can be gamed, and we publish the attack ourselves.** Run
+**Grading can be gamed.** Run
 `python -m whybox audit <sandbox>` to see how much of a sandbox's
 understanding score a notebook containing only the right keywords collects.
 For the example sandbox the answer is all of it. That is a property of word
@@ -41,8 +41,7 @@ something to report and asking for a private channel. Do not put the details
 in it.
 
 Expect an acknowledgement within a week. This is a small project with one
-maintainer and no security team, and promising a faster response than that
-would be dishonest.
+maintainer and no security team.
 
 ## Supported versions
 

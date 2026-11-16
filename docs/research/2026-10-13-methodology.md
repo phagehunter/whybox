@@ -23,7 +23,7 @@ searches were run rather than one.
 
 | Thread | Shares with us | Why it was chosen |
 |---|---|---|
-| 1. Agent evaluation harnesses | the plugin format: outsiders add new tasks to a shared runner | They solved task packaging, isolation, and versioning years ago. Inventing our own would be arrogant. |
+| 1. Agent evaluation harnesses | the plugin format: outsiders add new tasks to a shared runner | They have already addressed task packaging, isolation and versioning, so this project should adopt their conventions rather than invent new ones. |
 | 2. Scientific software standards | the repository itself: citable, reviewable, academic | There are published checklists. A repo that fails them looks unserious to exactly the audience we want. |
 | 3. Rule-induction games and teaching delivery | the puzzle and the student | The hidden-rule game is old and well studied. Separately, students cannot install Python. |
 | 4. Benchmark integrity and leaderboards | the published results | We promised a public leaderboard. Leaderboards fail in known, documented ways. |
@@ -90,7 +90,7 @@ A finding only becomes a change to this repository if it passes three tests:
    is not enough.
 2. **Proportion.** It has to make sense at this size. Much of what large
    benchmark projects do exists to handle scale and money we do not have, and
-   copying it would be cargo cult rather than craft.
+   copying it would add cost without benefit at this size.
 3. **It survives the stated audience.** The primary audience is
    undergraduates. A convention that serves maintainers at the cost of a
    student's first ten minutes loses.

@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>whybox — a guessing game about how experiments work</title>
-<meta name="description" content="Type a 24-letter code, get a score, and work out the hidden rule behind it. Takes ten minutes, needs nothing installed, and no background knowledge.">
+<meta name="description" content="Type a 24-letter code, get a score, and work out the hidden rule behind it. The game takes about ten minutes, runs in the browser, and requires no background knowledge.">
 <meta property="og:title" content="whybox">
-<meta property="og:description" content="Type a code, get a score, work out the hidden rule. A ten-minute game about how experiments actually work.">
+<meta property="og:description" content="Type a code, get a score, and work out the hidden rule. A ten-minute game about how experiments work.">
 <meta property="og:type" content="website">
 <meta name="author" content="Curtis Hoffmann">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="whybox: a ten-minute guessing game about how experiments work">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="whybox — a guessing game about how experiments work">
-<meta name="twitter:description" content="Type a 24-letter code, get a score, and work out the hidden rule behind it. Takes ten minutes, needs nothing installed, and no background knowledge.">
+<meta name="twitter:description" content="Type a 24-letter code, get a score, and work out the hidden rule behind it. The game takes about ten minutes, runs in the browser, and requires no background knowledge.">
 <meta name="twitter:image" content="https://curtishoffmann.com/whybox/assets/og-image.png">
 <script type="application/ld+json">
 {
@@ -33,7 +33,7 @@
    "url": "https://curtishoffmann.com/whybox/",
    "name": "whybox",
    "headline": "whybox — a guessing game about how experiments work",
-   "description": "Type a 24-letter code, get a score, and work out the hidden rule behind it. Takes ten minutes, needs nothing installed, and no background knowledge.",
+   "description": "Type a 24-letter code, get a score, and work out the hidden rule behind it. The game takes about ten minutes, runs in the browser, and requires no background knowledge.",
    "inLanguage": "en",
    "applicationCategory": "GameApplication",
    "operatingSystem": "Any (web browser)",
@@ -174,14 +174,14 @@
 <main>
 
   <h1>whybox</h1>
-  <p class="lede">A guessing game that is quietly a lesson in how experiments work. Ten minutes, nothing to install, and no background knowledge needed.</p>
+  <p class="lede">A guessing game that teaches how experiments work. It takes about ten minutes, runs in the browser with nothing to install, and requires no background knowledge.</p>
 
   <h2>What you do</h2>
 
   <ol class="steps">
     <li>Type a code <strong>24 letters long</strong>, using only the letters <span class="mono">A C G T</span>. For example <span class="mono">AAAAAAAAAAAAAAAAAAAAAAAA</span>.</li>
     <li>Press <strong>Test it</strong>. A machine gives your code a score between <strong>0 and 6</strong>. Higher is better.</li>
-    <li>Nobody tells you how the score is worked out. <strong>Figuring that out is the whole game.</strong></li>
+    <li>Nobody tells you how the score is worked out. Your task is to work out how the score is calculated.</li>
   </ol>
 
   <p>You get 15 tries. Here is the thing worth watching for: scoring well is easy, and you will probably hit the top score by accident in your first few goes. Being able to say <em>why</em> it is high is much harder. That gap between doing well and understanding is what this is really about.</p>
@@ -264,7 +264,7 @@
       <p class="small dim">Fingerprint <span class="mono" id="commitment-check"></span>, which should match the one from before you started.</p>
       <div class="warn small">
         <p style="margin:0 0 10px"><strong>Do not take that second number too seriously.</strong> It is worked out by searching your sentence for certain words. Write those words and nothing else and it gives you full marks, even having run no tests at all. Describe the rule correctly in words it does not recognize and it will mark you down for being original.</p>
-        <p style="margin:0">So read the real rule above against your own sentence. That comparison is the actual result. The number is a blunt instrument, and we say so rather than pretending otherwise.</p>
+        <p style="margin:0">Compare the rule above with your own sentence. That comparison is a better measure of what you worked out than the number is.</p>
       </div>
     </div>
   </div>
@@ -273,33 +273,33 @@
 
   <h2>Read this after you have played</h2>
 
-  <h3>What was the point of that?</h3>
+  <h3>What the game was for</h3>
 
-  <p>Real experimental science looks a lot like what you just did. Nature does not hand over its rules. You poke at something, write down what comes back, guess at the pattern, and poke again in a way that would show you up if your guess is wrong. The last part is the one people skip.</p>
+  <p>Experimental science works much like the game you just played: nature does not reveal its rules, so a researcher tests something, records the result, proposes a pattern, and then designs the next test so that it would fail if the pattern were wrong. That last step is the one most often skipped.</p>
 
-  <p>Notice what happened to your two numbers. If you got a high score early and still could not describe the rule, you found the thing this whole project is built around: <strong>doing well and understanding are not the same, and from the outside they look identical.</strong> That matters well beyond a browser game. It is the reason a computer model can predict something accurately while telling you nothing about why, and the reason an AI system can top a leaderboard without having understood the problem at all.</p>
+  <p>Compare your two numbers. If you reached a high score early but could not describe the rule, you have seen the difference this project is built to measure: from the outside, doing well and understanding look the same. The same difference explains how a computer model can predict something accurately without explaining it, and how an AI system can top a leaderboard without understanding the problem.</p>
 
   <h3>The three parts of a setup like this</h3>
 
-  <p>Any version of this game has the same three pieces. The things you submit, here a 24-letter code. The measurement that gets made on them. And the sealed machine that runs the measurement and hands back a number, usually called an <strong>oracle</strong>. Keeping the oracle shut is what forces you to work the rule out rather than look it up.</p>
+  <p>Any version of this game has three parts: first, the things you submit (here, a 24-letter code); second, the measurement made on them; and third, the sealed machine that runs the measurement and returns a number, usually called an <strong>oracle</strong>. Keeping the oracle shut is what forces you to work the rule out rather than look it up.</p>
 
   <p>Oracles come in three kinds. A <strong>wet</strong> one runs a genuine experiment in a lab: real, slow, expensive, and nobody knows the right answer in advance. A <strong>damp</strong> one runs a computer model trained on real measurements: much faster, and wrong in whatever ways the model is wrong. A <strong>dry</strong> one, like the one you just played against, runs a rule somebody invented. There is no biology in it, so nothing you found is a discovery about the world. In exchange, the answer is known exactly, which is the only reason your description could be checked at all.</p>
 
-  <h3>Two things we are not pretending about</h3>
+  <h3>Two limits of this page</h3>
 
   <p><strong>Nothing is really hidden in a web page.</strong> This page runs on your own computer, so somebody who knows where to look can read the rule straight out of it. That is how browsers work and we did not find a way around it. What the fingerprint does protect is narrower and still worth having: the rule could not change while you played.</p>
 
-  <p><strong>The scoring of your description is crude.</strong> See the warning above. It is published with its own weakness measured rather than quietly hoped over.</p>
+  <p><strong>The scoring of your description is crude.</strong> See the warning above. The Python package includes an audit command that measures how far this score can be inflated.</p>
 
   <h3>If you want to go further</h3>
 
-  <p>This page is one puzzle with one player. The full version is a Python package that runs the same thing with a proper lab notebook, automatic opponents that chase a high score without ever understanding anything, and grading that keeps the two numbers apart on purpose. It has no dependencies, so there is no setup to go wrong.</p>
+  <p>This page is one puzzle with one player. The full version is a Python package that runs the same game with a lab notebook, two automatic players that chase a high score without forming a theory, and grading that reports the two numbers separately. It needs only Python 3.9 or newer, with no other packages.</p>
 
   <div class="panel">
     <p class="mono small" style="margin:0">git clone https://github.com/phagehunter/whybox.git<br>cd whybox<br>python3 -m whybox run codon-lite --agent human --rounds 15</p>
   </div>
 
-  <p class="small">You can also write your own puzzle. The only real requirement is a system where you know the rule and the player does not. <a href="https://github.com/phagehunter/whybox/blob/main/docs/adding-a-sandbox.md">The guide</a> is short, and the interesting puzzles are the ones where a clever player fails in a way you can explain.</p>
+  <p class="small">You can also write your own puzzle. The only real requirement is a system where you know the rule and the player does not. <a href="https://github.com/phagehunter/whybox/blob/main/docs/adding-a-sandbox.md">The guide</a> is short. The most useful puzzles are ones where a capable player fails for a reason you can explain.</p>
 
   <hr>
 
@@ -363,9 +363,8 @@
              "and most people never try.";
     }
     if (n < MAX_ROUNDS) {
-      return "Write down your rule now, before your tries run out. Then " +
-             "spend what is left trying to prove yourself wrong. A rule that " +
-             "survives that is worth something.";
+      return "Write down your rule now, before your tries run out, and use " +
+             "the rest to test it against codes that should break it.";
     }
     return "That was your last try. Write what you think the rule is below, " +
            "then see the answer.";

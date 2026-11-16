@@ -20,9 +20,6 @@ If the tests pass, you are set up. There is nothing else to install.
 You need a system where you know the rule and an investigator does not; the
 code around that is about forty lines.
 
-A sandbox is a contribution in its own right, and the interesting ones are the
-ones where a capable investigator fails in a way you can explain.
-
 Before you propose one, run:
 
 ```bash
@@ -45,8 +42,8 @@ open an issue describing the problem rather than the solution.
 Two rules are not up for negotiation, because the project has no point without
 them:
 
-1. **Score and understanding are never combined into one number.** Not in the
-   grader, not in the leaderboard, not in a convenience helper.
+1. **Score and understanding are never combined into one number.** This
+   applies to the grader, the leaderboard and any helper function.
 2. **The investigator never grades its own run**, and nothing sends the hidden
    rule back through a report.
 

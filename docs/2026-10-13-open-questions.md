@@ -2,9 +2,9 @@
 
 ## Decided by the project lead, 2026-10-13
 
-**Primary audience: undergraduates learning how experiments work.** Zero setup
-wins. A student should be able to play a sandbox by hand before any model does.
-This is the decision with the widest effect on everything below.
+**Primary audience: undergraduates learning how experiments work.** Setup should
+be as close to zero as possible, and a student should be able to play a sandbox
+by hand before any model does. This decision affects everything below.
 
 What it already changed:
 

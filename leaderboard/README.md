@@ -11,10 +11,9 @@ random       1, single run     6.0      0/4  rubric       unverified
 hillclimb    1, single run     5.0      0/4  rubric       unverified
 ```
 
-Random guessing reaches the ceiling. A careful hill climb does not quite. And
-neither states a single true thing about the rule that produced the number.
-If blind guessing beats a systematic search, the score column was never
-measuring the thing anyone cared about.
+Random guessing reaches the ceiling, the hill climber reaches 5 of 6, and
+neither states anything true about the rule. In this sandbox the score column
+does not measure understanding.
 
 The heading says "results version 1" rather than naming the exact sandbox
 version, because a letter bump means the interface changed and the scores did

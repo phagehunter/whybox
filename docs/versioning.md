@@ -1,7 +1,8 @@
 # Versioning
 
-Two different things carry versions here, and conflating them is how
-benchmarks quietly stop meaning anything.
+Two different things carry versions here: the toolkit and each sandbox.
+Keeping them separate lets a reader tell whether old scores are still
+comparable.
 
 ## The toolkit
 
@@ -25,9 +26,9 @@ Neither part ever resets, and neither can be reused.
 ## Why two parts rather than one
 
 "Your old score is meaningless" and "your old command no longer runs" are
-different emergencies, and a single number cannot say which has happened. The
-convention is borrowed from the most actively maintained evaluation harness in
-this field, which arrived at it the hard way.
+different problems, and a single number cannot say which has happened. The
+convention is borrowed from Inspect Evals (see
+[docs/research/2026-10-13-thread1-harnesses.md](research/2026-10-13-thread1-harnesses.md)).
 
 ## The rule that is easy to break by accident
 
